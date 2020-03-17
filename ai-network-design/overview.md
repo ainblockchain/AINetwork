@@ -1,0 +1,9 @@
+# Design Principles
+
+AI Network blockchain is responsible for managing uploaded programs, resource providers, and incoming requests from clients. AIN blockchain design principles are as follows:
+
+1. Asynchronous & Stateless: All Ethereum smart contract operations are stateful, and contract calls cannot be executed in parallel. AIN blockchain starts operation by setting a value for the path in the blockchain's database. Each worker for this operation then records their result in this designated path. Unless there are duplicated attempts to change the value of the path at the same time, operations can run in parallel. 
+2. Composable: Developers often use third-party API to enhance the application’s features, but maintaining upgrades from different API providers is not an easy task. In the worst case, API providers may switch their billing plans or deprecate old APIs which may be critical to operating applications. AI Network functions can become ownerless like blockchain smart contracts, and developers no longer have to worry about functions being modified unexpectedly. This enables developers to design stable microservice architecture for their applications.
+3. Lightweight & Fast: Transactions store a very small amount of data \(~250bytes\), which is transmitted to the network through a gossip protocol. While blockchain nodes are capable of quickly recording these lightweight transactions at scale, workers are also free to join anytime and can start processing jobs triggered by the blockchain state change.
+4. Sharding: AIN blockchain stores database state in a tree structure. This allows the database to be easily partitioned into multiple sub-trees. Besides genesis PoS rules, each partitioned sub-tree may define its own consensus rules and maintain small blockchain for each sub-tree. 
+
